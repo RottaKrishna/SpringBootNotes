@@ -372,7 +372,6 @@ public class Main {
 This approach is useful when we need to **dynamically configure values** without modifying the Java code, making it more flexible and maintainable.
 
 F)
-Here are the clear and concise notes on **setter injection with reference attributes** in Spring:  
 
 ---
 
