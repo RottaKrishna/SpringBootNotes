@@ -320,6 +320,110 @@ E)
 F)
 creating a rest controller Related
 
+### **Migrating from JSP to a RESTful Spring Boot Backend**  
+
+Since we previously worked with JSP views, we are now shifting to a **pure backend** implementation using REST APIs. We will reuse the **Model, Repository, and Service** layers while replacing the **Controller** to return JSON responses instead of views.
+
+---
+
+## **1. Creating a New Spring Boot Project**
+### **Using Spring Initializr**
+- **Project Type**: Maven  
+- **Spring Boot Version**: Latest stable version  
+- **Group**: `com.company`  
+- **Artifact**: `spring-boot-backend`  
+- **Packaging**: JAR  
+- **Java Version**: 21  
+- **Dependencies**:
+  - **Spring Web** (for REST APIs)
+  - **Lombok** (for reducing boilerplate code)
+
+Download and extract the project, then open it in **IntelliJ IDEA**.
+
+---
+
+## **2. Reusing Existing Components**
+We will reuse the following from the previous project:
+- **Model** (`JobPost.java`)
+- **Repository** (`JobPostRepository.java`)
+- **Service** (`JobService.java`)
+
+Copy these files into the new project.
+
+We **do not** need:
+- JSP views  
+- Old `application.properties` (delete it if copied by mistake)
+
+---
+
+## **3. Implementing the REST Controller**
+Since we are building a **RESTful API**, we must modify the controller to **return JSON** instead of views.
+
+### **New `JobPostController`**
+Create a new class `JobPostController.java` in the `controller` package.
+
+```java
+package com.company.controller;
+
+import com.company.model.JobPost;
+import com.company.service.JobService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
+
+@RestController  // This replaces @Controller
+@RequestMapping("/api")  // Base path for all endpoints
+public class JobPostController {
+
+    @Autowired
+    private JobService jobService;
+
+    @GetMapping("/job-posts")
+    public List<JobPost> getAllJobs() {
+        return jobService.getAllJobs();
+    }
+}
+```
+### **Key Changes**
+✅ **Replaced `@Controller` with `@RestController`** → This tells Spring that we are returning JSON, not views.  
+✅ **Used `@RequestMapping("/api")`** → Organizes our endpoints under `/api` for better structuring.  
+✅ **Changed the return type to `List<JobPost>`** instead of returning a view name.  
+
+---
+
+## **4. Running and Testing the API**
+### **Step 1: Start the Spring Boot Application**
+Run the application from the main class.
+
+**Common Errors & Fixes:**
+- **Port already in use** → Stop the previous project and restart.
+- **Lombok not working** → Enable annotation processing in IntelliJ.
+
+### **Step 2: Testing in Browser**
+Open:
+```
+http://localhost:8080/api/job-posts
+```
+If you get an **HTTP 500 error**, check the logs.  
+**Fix:** Ensure `@RestController` is used instead of `@Controller`.  
+
+### **Step 3: Testing in Postman**
+- **Method:** `GET`
+- **URL:** `http://localhost:8080/api/job-posts`
+- Click **Send** and verify that JSON data is returned.
+
+---
+
+## **Conclusion**
+🚀 We successfully migrated from a JSP-based project to a **Spring Boot REST API**.  
+🔹 **Removed JSP views**  
+🔹 **Used `@RestController` for JSON responses**  
+🔹 **Reused Model, Repository, and Service layers**  
+🔹 **Tested API using Browser & Postman**  
+
+Now, we can extend this further by adding **POST, PUT, and DELETE** endpoints for a complete CRUD API.
+
 G)
 ### **Notes on Connecting React Frontend with Spring Boot Backend**  
 
