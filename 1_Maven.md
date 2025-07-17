@@ -1,54 +1,38 @@
----
+# Maven - Introduction & Importance
 
-## **A) Maven - Introduction & Importance**
+## What is Maven?
 
-**What is Maven?**
+Maven is a project management tool used in Java development. It helps in compiling, running, testing, packaging, and deploying a project.
 
-Maven is a project management tool used in Java development.
+## Why do we need Maven?
 
-It helps in compiling, running, testing, packaging, and deploying a project.
+A Java project often requires external libraries (JAR files). For example, to connect Java with a database, we need a database connector JAR (MySQL Connector, Postgres Connector, etc.). If using frameworks like Hibernate or Spring, multiple JAR files are required, including transitive dependencies (dependencies of dependencies).
 
-### **Why do we need Maven?**
+## Problems without Maven
 
-A Java project often requires external libraries (JAR files).
+- Manually searching and downloading JAR files is time-consuming
+- Keeping version compatibility between dependencies (e.g., Hibernate & Spring) is challenging
+- Sharing projects with teammates requires them to download the same dependencies manually
 
-Example: To connect Java with a database, we need a database connector JAR (MySQL Connector, Postgres Connector, etc.).
+## How Maven Helps
 
-If using frameworks like Hibernate or Spring, multiple JAR files are required, including transitive dependencies (dependencies of dependencies).
+- Manages dependencies automatically
+- Ensures version compatibility between different libraries
+- Provides plugins for compiling, testing, running, and deploying
 
-### **Problems without Maven:**
+## Other Tools
 
-- Manually searching and downloading JAR files is time-consuming.
-- Keeping version compatibility between dependencies (e.g., Hibernate & Spring) is challenging.
-- Sharing projects with teammates requires them to download the same dependencies manually.
-
-### **How Maven Helps:**
-
-- Manages dependencies automatically.
-- Ensures version compatibility between different libraries.
-- Provides plugins for compiling, testing, running, and deploying.
-
-### **Other Tools:**
-
-Alternatives: Gradle, Ivy, etc.
+**Alternatives:** Gradle, Ivy, etc.
 
 Maven is beginner-friendly and widely used in Java development.
 
-### **How Maven Works:**
+## How Maven Works
 
-Developers specify dependencies in Maven.
+Developers specify dependencies in Maven. For example: "Maven, I need Hibernate dependency (specific version)." Maven fetches and manages dependencies automatically.
 
-Example: "Maven, I need Hibernate dependency (specific version)."
+## Focus of This Section
 
-Maven fetches and manages dependencies automatically.
-
-**Focus of This Section:**
-
-Understanding Maven for dependency management (not plugins).
-
-Maven simplifies working with frameworks like Spring and Hibernate.
-
----
+Understanding Maven for dependency management (not plugins). Maven simplifies working with frameworks like Spring and Hibernate.
 
 ## **B) Setting Up Maven**
 
